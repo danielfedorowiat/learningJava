@@ -1,7 +1,12 @@
 package com.fedorowiat;
 
+
+import com.fedorowiat.menu.Menu;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Cześć");
+        Menu menu = new Menu();
+        menu.showMenu();
+
     }
 }
