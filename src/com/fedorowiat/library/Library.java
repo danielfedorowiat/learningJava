@@ -1,32 +1,34 @@
 package com.fedorowiat.library;
 
 import com.fedorowiat.book.Book;
-import com.fedorowiat.menu.Menu;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Library {
-    Scanner input = new Scanner(System.in);
-    List<Book> listOfBooks = new ArrayList<Book>();
+    private final Scanner input;
+    private final List<Book> listOfBooks;
 
-    private static int id = 0;
-    private String author, title, yearOfPublication;
+    public Library(Scanner input, List<Book> listOfBooks) {
+        this.input = input;
+        this.listOfBooks = listOfBooks;
+    }
 
     public void addBookToLibrary() {
         System.out.println("Podaj tytuł książki: ");
-        title = input.nextLine();
+        String title = input.nextLine();
 
         System.out.println("Podaj autora książki: ");
-        author = input.nextLine();
+        String author = input.nextLine();
 
         System.out.println("Podaj rok publikacji książki: ");
-        yearOfPublication = input.nextLine();
+        String yearOfPublication = input.nextLine();
 
-        listOfBooks.add(new Book(id,title,author,yearOfPublication));
-        id++;
+        listOfBooks.add(new Book(listOfBooks.size()+1,title,author,yearOfPublication));
+
 
     }
 
+    public List<Book> getListOfBooks() {
+        return listOfBooks;
+    }
 }

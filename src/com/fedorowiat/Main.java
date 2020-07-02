@@ -1,12 +1,12 @@
 package com.fedorowiat;
 
 
-import com.fedorowiat.menu.Menu;
+import com.fedorowiat.menu.MainMenu;
 
 public class Main {
     public static void main(String[] args) {
-        Menu menu = new Menu();
-        menu.showMenu();
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.showMainMenu();
 
     }
 }
