@@ -27,7 +27,6 @@ public final class User {
     }
 
 
-
     public boolean isPermissions() {
         return permissions;
     }

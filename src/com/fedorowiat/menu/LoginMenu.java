@@ -5,33 +5,37 @@ import com.fedorowiat.accounts.Accounts;
 import java.util.Scanner;
 
 public class LoginMenu {
+    private final UserMenu userMenu;
+    private final AdminMenu adminMenu;
+    private final Accounts accounts;
+    private final Scanner input;
 
-    private final Accounts accounts ;
-    private final Scanner input ;
-
-    public LoginMenu(final  Accounts accounts) {
+    public LoginMenu(final Accounts accounts) {
+        this.userMenu = new UserMenu();
         this.accounts = accounts;
+        this.adminMenu = new AdminMenu();
         this.input = new Scanner(System.in);
     }
 
-    public void showLoginMenu(){
+    public void showLoginMenu() {
         System.out.print("Podaj login: ");
         String login = input.nextLine();
 
         System.out.print("Podaj hasło: ");
         String password = input.nextLine();
 
-        if(accounts.checkLogin(login) && accounts.checkPassword(password)){
-            if(accounts.checkPermission(login)){
-                System.out.println("Konto admina.");
-            }else {
-                System.out.println("Konto użytkownika.");
+        if (accounts.checkAccount(login,password)) {
+            if (accounts.checkPermission(login)) {
+                adminMenu.showAdminMenu(login);
+            } else {
+                userMenu.showUserMenu(login);
             }
-        }else{
-            System.out.println("Błędny login lub hasło");
+        } else {
+            System.out.println("\nBłędny login lub hasło\n");
         }
 
 
     }
+
 
 }
