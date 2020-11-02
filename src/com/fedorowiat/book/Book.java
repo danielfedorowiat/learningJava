@@ -8,7 +8,6 @@ public class Book {
     private final String yearOfPublication;
     private Integer numberOfBooksAvailable;
     private String status;
-    public static int licznik=0;
 
     public Book(Integer id, String title, String author, String yearOfPublication, Integer numberOfBooksAvailable, String status) {
         this.id = id;
@@ -17,7 +16,6 @@ public class Book {
         this.yearOfPublication = yearOfPublication;
         this.numberOfBooksAvailable = numberOfBooksAvailable;
         this.status = status;
-        licznik++;
     }
 
     @Override
@@ -70,16 +68,6 @@ public class Book {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-
-
-    public  static void  setLicznik(int licznik){
-        System.out.println(Book.licznik=licznik);
-    }
-
-    public static Book creatNewBook(){
-       return new Book(4,"dupa","dupa","123",123,"dostępna");
     }
 
 

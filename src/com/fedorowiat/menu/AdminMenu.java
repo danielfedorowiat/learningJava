@@ -1,23 +1,19 @@
 package com.fedorowiat.menu;
 
 
-import com.fedorowiat.accounts.AccountManager;
-
-import com.fedorowiat.book.Book;
+import com.fedorowiat.accounts.Account;
 import com.fedorowiat.library.Library;
-
-
 import java.util.Scanner;
 
 public class AdminMenu {
     private final Scanner input;
     private final Library library;
-    private final AccountManager accountManager;
+    private final Account account;
 
-    public AdminMenu(Library library,AccountManager accountManager) {
+    public AdminMenu(Library library, Account account) {
         this.library = library;
         this.input = new Scanner(System.in);
-        this.accountManager = accountManager;
+        this.account = account;
     }
 
 
@@ -34,49 +30,17 @@ public class AdminMenu {
                             "3. Pokaż liste książek\n" +
                             "4. Pokaż listę użytkowników\n" +
                             "5. Pokaż listę osób, które wypożyczyły książkę\n" +
-                            "6. Pokaż ilość książek\n" +
-                            "7. Wyloguj\n" +
-                            "8. Ustawi licznk na 0\n\n"
-
+                            "6. Wyloguj\n\n"
             );
             int choice = input.nextInt();
             switch (choice) {
-                case 1: {
-                    library.addBookToLibrary();
-                    break;
-                }
-                case 2: {
-                    library.deleteBookFromLibrary();
-                    break;
-                }
-                case 3: {
-                    library.showListOfTheBooks();
-                    break;
-                }
-                case 4: {
-                    accountManager.showUsers();
-                    break;
-                }
-                case 5: {
-                    accountManager.showBorrowedBooksByTheUsers();
-                    break;
-                }
-                case 6: {
-                    System.out.println(Book.licznik);
-                    break;
-                }
-                case 7: {
-                    loop = false;
-                    break;
-                }
-                case 8: {
-                    Book.setLicznik(0);
-                    break;
-                }
-                default: {
-                    System.out.println("\n\nNie wybrano prawdiłowej opcji!\n\n");
-                    break;
-                }
+                case 1 -> library.addBookToLibrary();
+                case 2 -> library.deleteBookFromLibrary();
+                case 3 -> library.showListOfTheBooks();
+                case 4 -> account.showUsers();
+                case 5 -> account.showBorrowedBooksByTheUsers();
+                case 6 -> loop = false;
+                default -> System.out.println("\n\nNie wybrano prawdiłowej opcji!\n\n");
             }
         }
 

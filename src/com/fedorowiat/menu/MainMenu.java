@@ -1,22 +1,23 @@
 package com.fedorowiat.menu;
 
 
-import com.fedorowiat.accounts.AccountManager;
+import com.fedorowiat.accounts.Account;
+import com.fedorowiat.accounts.AccountService;
 import com.fedorowiat.library.Library;
+import com.fedorowiat.library.LibraryService;
 
 import java.util.Scanner;
 
 public class MainMenu {
     private final Scanner input;
     private final LoginMenu loginMenu;
-    private final AccountManager accountManager;
-    private final Library library;
+    private final Account account;
 
     public MainMenu() {
-        this.library = new Library();
-        this.accountManager = new AccountManager();
+        Library library = LibraryService.libraryService();
+        this.account = AccountService.accountService();
         this.input = new Scanner(System.in);
-        this.loginMenu = new LoginMenu(this.library, this.accountManager);
+        this.loginMenu = new LoginMenu(library, account);
     }
 
     public void showMainMenu() {
@@ -31,39 +32,11 @@ public class MainMenu {
                     " ------------------\n\n");
             int choice = input.nextInt();
             switch (choice) {
-                case 1: {
-                    loginMenu.showLoginMenu();
-                    break;
-                }
-                case 2: {
-                    addNewUser();
-                    break;
-                }
-                case 3: {
-                    loop = false;
-                    break;
-                }
-                default: {
-                    System.out.println("\n\nNie wybrano prawidlowej opcji!\n\n");
-                    break;
-                }
+                case 1 -> loginMenu.showLoginMenu();
+                case 2 -> account.addNewUser();
+                case 3 -> loop = false;
+                default -> System.out.println("\n\nNie wybrano prawidlowej opcji!\n\n");
             }
-        }
-    }
-
-    private void addNewUser() {
-        System.out.print("\n\nPodaj login: ");
-        input.nextLine();
-        String login = this.input.nextLine();
-
-        System.out.print("Podaj hasło: ");
-        String password = this.input.nextLine();
-        System.out.println("\n\n");
-
-        if (accountManager.addUserAccount(login, password)) {
-            System.out.println("\n\nPomyślnie utworzono konto\n\n");
-        } else {
-            System.out.println("\n\nPodany login juz istnieje!\n\n");
         }
     }
 

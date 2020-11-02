@@ -2,6 +2,7 @@ package com.fedorowiat.menu;
 
 import com.fedorowiat.book.Book;
 import com.fedorowiat.library.Library;
+import com.fedorowiat.library.LibraryService;
 import com.fedorowiat.user.User;
 
 import java.util.Scanner;
@@ -38,20 +39,14 @@ public class UserMenu {
                                 "  status = " + book.getStatus());
                     }
                 }
-                case 2 -> {
-                    library.borrowABook(loggedUser);
-                }
+                case 2 -> library.borrowABook(loggedUser);
                 case 3 -> {
-                    for (Book book : loggedUser.getBorrowedBooks()) {
-                        book.showBorrowedBooks();
-                    }
+//                    for (Book book : loggedUser.getBorrowedBooks()) {
+//                        book.showBorrowedBooks();
+//                    }
                 }
-                case 4 -> {
-                    loop = false;
-                }
-                default -> {
-                    System.out.println("\n\nNie wybrano prawdiłowej opcji!\n\n");
-                }
+                case 4 -> loop = false;
+                default -> System.out.println("\n\nNie wybrano prawdiłowej opcji!\n\n");
             }
         }
     }

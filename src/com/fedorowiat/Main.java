@@ -1,6 +1,5 @@
 package com.fedorowiat;
 
-
 import com.fedorowiat.menu.MainMenu;
 
 public class Main {
@@ -8,8 +7,4 @@ public class Main {
         MainMenu mainMenu = new MainMenu();
         mainMenu.showMainMenu();
     }
-
-
-
-
 }

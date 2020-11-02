@@ -1,7 +1,7 @@
 package com.fedorowiat.menu;
 
-import com.fedorowiat.Main;
-import com.fedorowiat.accounts.AccountManager;
+
+import com.fedorowiat.accounts.Account;
 import com.fedorowiat.library.Library;
 
 import java.util.Scanner;
@@ -9,13 +9,13 @@ import java.util.Scanner;
 public class LoginMenu {
     private final UserMenu userMenu;
     private final AdminMenu adminMenu;
-    private final AccountManager accountManager;
+    private final Account account;
     private final Scanner input;
 
-    public LoginMenu(Library library, final AccountManager accountManager) {
+    public LoginMenu(Library library, final Account account) {
         this.userMenu = new UserMenu(library);
-        this.accountManager = accountManager;
-        this.adminMenu = new AdminMenu(library, this.accountManager);
+        this.account = account;
+        this.adminMenu = new AdminMenu(library, this.account);
         this.input = new Scanner(System.in);
     }
 
@@ -26,12 +26,19 @@ public class LoginMenu {
         System.out.print("Podaj hasło: ");
         String password = input.nextLine();
         System.out.println("\n\n");
-        if (accountManager.checkAccount(login, password)) {
-            if (accountManager.checkPermission(login)) {
+
+        if (account.checkAccount(login, password)) {
+
+            if (account.checkPermission(login)) {
+
                 adminMenu.showAdminMenu(login);
-            } else userMenu.showUserMenu(accountManager.getUser(login).get());
+
+            } else userMenu.showUserMenu(account.getUser(login).get());
+
         } else {
+
             System.out.println("\n\nBłędny login lub hasło\n\n");
+
         }
 
 

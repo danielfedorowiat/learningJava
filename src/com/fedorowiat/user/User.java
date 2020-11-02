@@ -1,7 +1,6 @@
 package com.fedorowiat.user;
 
 import com.fedorowiat.book.Book;
-
 import java.util.List;
 
 public final class User {
@@ -33,7 +32,6 @@ public final class User {
     public boolean isPermissions() {
         return permissions;
     }
-
 
 
     public List<Book> getBorrowedBooks() {
