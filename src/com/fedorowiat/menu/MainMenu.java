@@ -1,26 +1,25 @@
 package com.fedorowiat.menu;
 
 
-import com.fedorowiat.accounts.Account;
-import com.fedorowiat.accounts.AccountService;
-import com.fedorowiat.library.Library;
-import com.fedorowiat.library.LibraryService;
 
+import com.fedorowiat.dbservice.DataBase;
+import com.fedorowiat.dbservice.DataBaseService;
+import com.fedorowiat.user.User;
 import java.util.Scanner;
 
 public class MainMenu {
     private final Scanner input;
     private final LoginMenu loginMenu;
-    private final Account account;
+    private final DataBase dataBase;
+
 
     public MainMenu() {
-        Library library = LibraryService.libraryService();
-        this.account = AccountService.accountService();
         this.input = new Scanner(System.in);
-        this.loginMenu = new LoginMenu(library, account);
+        this.loginMenu = new LoginMenu();
+        this.dataBase = new DataBaseService();
     }
 
-    public void showMainMenu() {
+    public void showMainMenu(){
         boolean loop = true;
         while (loop) {
             System.out.println("\n\n __________________\n" +
@@ -32,8 +31,8 @@ public class MainMenu {
                     " ------------------\n\n");
             int choice = input.nextInt();
             switch (choice) {
-                case 1 -> loginMenu.showLoginMenu();
-                case 2 -> account.addNewUser();
+                case 1 -> System.out.println("logowanie");
+                case 2 -> dataBase.registerAccount();
                 case 3 -> loop = false;
                 default -> System.out.println("\n\nNie wybrano prawidlowej opcji!\n\n");
             }

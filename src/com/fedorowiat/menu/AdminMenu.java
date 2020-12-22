@@ -1,19 +1,15 @@
 package com.fedorowiat.menu;
 
 
-import com.fedorowiat.accounts.Account;
-import com.fedorowiat.library.Library;
+
 import java.util.Scanner;
 
 public class AdminMenu {
     private final Scanner input;
-    private final Library library;
-    private final Account account;
 
-    public AdminMenu(Library library, Account account) {
-        this.library = library;
+
+    public AdminMenu() {
         this.input = new Scanner(System.in);
-        this.account = account;
     }
 
 
@@ -34,11 +30,11 @@ public class AdminMenu {
             );
             int choice = input.nextInt();
             switch (choice) {
-                case 1 -> library.addBookToLibrary();
-                case 2 -> library.deleteBookFromLibrary();
-                case 3 -> library.showListOfTheBooks();
-                case 4 -> account.showUsers();
-                case 5 -> account.showBorrowedBooksByTheUsers();
+                case 1 -> {}
+                case 2 -> {}
+                case 3 -> {}
+                case 4 -> {}
+                case 5 -> {}
                 case 6 -> loop = false;
                 default -> System.out.println("\n\nNie wybrano prawdiłowej opcji!\n\n");
             }

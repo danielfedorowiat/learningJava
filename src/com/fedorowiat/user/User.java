@@ -3,21 +3,54 @@ package com.fedorowiat.user;
 import com.fedorowiat.book.Book;
 import java.util.List;
 
-public final class User {
-    private final Integer id;
-    private final String login;
-    private final String password;
-    private final Boolean permissions;
-    private final List<Book> borrowedBooks;
+public class User {
+    private Integer id;
+    private String login;
+    private String firstName;
+    private String lastName;
+    private String password;
+    private Boolean permissions;
 
-    public User(Integer id, String login, String password, Boolean permissions, List<Book> borrowedBooks) {
-        this.id = id;
+
+    public User(String login,String firstName, String lastName, String password, Boolean permissions) {
         this.login = login;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
         this.permissions = permissions;
-        this.borrowedBooks = borrowedBooks;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPermissions(Boolean permissions) {
+        this.permissions = permissions;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Boolean getPermissions() {
+        return permissions;
+    }
 
     public String getLogin() {
         return login;
@@ -33,11 +66,13 @@ public final class User {
         return permissions;
     }
 
-
-    public List<Book> getBorrowedBooks() {
-        return borrowedBooks;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     @Override
     public String toString() {

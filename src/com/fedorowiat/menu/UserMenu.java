@@ -1,18 +1,15 @@
 package com.fedorowiat.menu;
 
 import com.fedorowiat.book.Book;
-import com.fedorowiat.library.Library;
-import com.fedorowiat.library.LibraryService;
 import com.fedorowiat.user.User;
 
 import java.util.Scanner;
 
 public class UserMenu {
-    private final Library library;
+
     private final Scanner input;
 
-    public UserMenu(Library library){
-        this.library = library;
+    public UserMenu(){
         this.input = new Scanner(System.in);
     }
 
@@ -31,20 +28,9 @@ public class UserMenu {
             );
             int choice = input.nextInt();
             switch (choice) {
-                case 1 -> {
-                    for (Book book : library.getListOfBooks()) {
-                        System.out.println("  autor = " + book.getAuthor() +
-                                "  tytuł = " + book.getTitle() +
-                                "  rok wydania = " + book.getYearOfPublication() +
-                                "  status = " + book.getStatus());
-                    }
-                }
-                case 2 -> library.borrowABook(loggedUser);
-                case 3 -> {
-//                    for (Book book : loggedUser.getBorrowedBooks()) {
-//                        book.showBorrowedBooks();
-//                    }
-                }
+                case 1 -> {}
+                case 2 -> {}
+                case 3 -> {}
                 case 4 -> loop = false;
                 default -> System.out.println("\n\nNie wybrano prawdiłowej opcji!\n\n");
             }
