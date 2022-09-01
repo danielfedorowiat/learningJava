@@ -1,6 +1,5 @@
 package com.fedorowiat.menu;
 
-import com.fedorowiat.book.Book;
 import com.fedorowiat.user.User;
 
 import java.util.Scanner;
@@ -9,11 +8,11 @@ public class UserMenu {
 
     private final Scanner input;
 
-    public UserMenu(){
+    public UserMenu() {
         this.input = new Scanner(System.in);
     }
 
-    public void showUserMenu(User loggedUser){
+    public void showUserMenu(User loggedUser) {
         boolean loop = true;
         while (loop) {
             System.out.print("\n\nWitaj.------");
@@ -28,18 +27,17 @@ public class UserMenu {
             );
             int choice = input.nextInt();
             switch (choice) {
-                case 1 -> {}
-                case 2 -> {}
-                case 3 -> {}
+                case 1 -> {
+                }
+                case 2 -> {
+                }
+                case 3 -> {
+                }
                 case 4 -> loop = false;
                 default -> System.out.println("\n\nNie wybrano prawdiłowej opcji!\n\n");
             }
         }
     }
-
-
-
-
 
 
 }

@@ -6,6 +6,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface DataBase {
-  void registerAccount();
-
+  String getEmail(String email);
+  void setUser(User user);
 }
