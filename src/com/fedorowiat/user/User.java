@@ -1,7 +1,6 @@
 package com.fedorowiat.user;
 
-import com.fedorowiat.book.Book;
-import java.util.List;
+
 
 public class User {
     private Integer id;
