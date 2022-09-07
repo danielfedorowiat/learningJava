@@ -25,13 +25,18 @@ public class MainMenu {
     public void showMainMenu() {
         boolean loop = true;
         while (loop) {
-            System.out.println("\n\n __________________\n" +
-                    "|Witaj w bibliotece|\n" +
-                    "|##################|\n" +
-                    "|1.Logowanie       |\n" +
-                    "|2.Rejestracja     |\n" +
-                    "|3.Zakończ         |\n" +
-                    " ------------------\n\n");
+            System.out.println("""
+                     
+
+                     __________________
+                    |Witaj w bibliotece|
+                    |##################|
+                    |1.Logowanie       |
+                    |2.Rejestracja     |
+                    |3.Zakończ         |
+                     ------------------
+
+                    """);
             int choice = input.nextInt();
             switch (choice) {
                 case 1 -> System.out.println("logowanie");

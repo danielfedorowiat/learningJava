@@ -6,31 +6,30 @@ import com.fedorowiat.dbservice.DataBaseService;
 import java.util.Scanner;
 
 public class UserService {
-    private User user;
     private Scanner scanner;
     private DataBase dataBase;
 
     public UserService() {
         this.scanner = new Scanner(System.in);
-        this.user = new User("", "", "", "", false);
         this.dataBase = new DataBaseService();
     }
 
 
     public void registerAccount() {
+        User user = new User("", "", "", "", false);
         var reenterLogin = true;
         while (reenterLogin) {
-            System.out.println("Podaj login: ");
+            System.out.println("Podaj email: ");
             var login = scanner.nextLine();
-            if (checkEmailIsExist(login)) {
+            if (dataBase.checkEmailIsExist(login)) {
                 System.out.println("Podaj imię: ");
                 user.setFirstName(scanner.nextLine());
 
                 System.out.println("Podaj nazwisko: ");
                 user.setLastName(scanner.nextLine());
 
-                checkIfPasswordAreEquals();
-                dataBase.setUser(user);
+                checkIfPasswordAreEquals(user);
+                dataBase.saveUser(user);
                 System.out.println("Pomyślnie utworzono konto.");
                 reenterLogin = false;
             } else {
@@ -39,11 +38,8 @@ public class UserService {
         }
     }
 
-    private boolean checkEmailIsExist(String email) {
-        return dataBase.getEmail(email).length() == 0;
-    }
 
-    private void checkIfPasswordAreEquals() {
+    private void checkIfPasswordAreEquals(User user) {
         var isNotCorrect = true;
         while (isNotCorrect) {
             System.out.println("Podaj hasło: ");
