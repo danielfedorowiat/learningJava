@@ -2,6 +2,8 @@ package com.fedorowiat.menu;
 
 
 
+import com.fedorowiat.dbservice.DataBase;
+
 import java.util.Scanner;
 
 public class LoginMenu {
@@ -15,13 +17,22 @@ public class LoginMenu {
         this.input = new Scanner(System.in);
     }
 
-    public void showLoginMenu() {
+    public void showLoginMenu(DataBase dataBase) {
         System.out.print("\n\nPodaj login: ");
-        String login = input.nextLine();
-
+        var login = input.nextLine();
         System.out.print("Podaj hasło: ");
-        String password = input.nextLine();
+        var password = input.nextLine();
         System.out.println("\n\n");
+            if(dataBase.checkLoginData(login, password)){
+                if (dataBase.getAccessLevel(login, password).equals("false")){
+                    userMenu.showUserMenu(login);
+                } else if (dataBase.getAccessLevel(login, password).equals("true")) {
+                    adminMenu.showAdminMenu(login);
+                } else {
+                    System.out.println("Błędny login lub hasło");
+                }
+            }
+
     }
 
 

@@ -12,6 +12,7 @@ public class MainMenu {
     private final Scanner input;
     private final LoginMenu loginMenu;
     private UserService userService;
+    private DataBase dataBase;
 
 
 
@@ -19,7 +20,7 @@ public class MainMenu {
         this.input = new Scanner(System.in);
         this.loginMenu = new LoginMenu();
         this.userService = new UserService();
-
+        this.dataBase = new DataBaseService();
     }
 
     public void showMainMenu() {
@@ -27,7 +28,7 @@ public class MainMenu {
         while (loop) {
             System.out.println("""
                      
-
+                     
                      __________________
                     |Witaj w bibliotece|
                     |##################|
@@ -36,10 +37,11 @@ public class MainMenu {
                     |3.Zakończ         |
                      ------------------
 
+
                     """);
             int choice = input.nextInt();
             switch (choice) {
-                case 1 -> System.out.println("logowanie");
+                case 1 -> loginMenu.showLoginMenu(dataBase);
                 case 2 -> userService.registerAccount();
                 case 3 -> loop = false;
                 default -> System.out.println("\n\nNie wybrano prawidlowej opcji!\n\n");

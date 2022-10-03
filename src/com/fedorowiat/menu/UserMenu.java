@@ -12,18 +12,21 @@ public class UserMenu {
         this.input = new Scanner(System.in);
     }
 
-    public void showUserMenu(User loggedUser) {
+    public void showUserMenu(String loggedUser) {
         boolean loop = true;
         while (loop) {
             System.out.print("\n\nWitaj.------");
-            System.out.println("Zalogowany jako: " + loggedUser.getLogin());
+            System.out.println("Zalogowany jako: " + loggedUser);
             System.out.println("-----------------------------");
             System.out.println(
-                    "Biblioteka: \n" +
-                            "1. Pokaż liste książek \n" +
-                            "2. Wypożycz książke\n" +
-                            "3. Pokaż moją listę wypożyczonych książek\n" +
-                            "4. Wyloguj\n\n"
+                    """
+                            Biblioteka:\s
+                            1. Pokaż liste książek\s
+                            2. Wypożycz książke
+                            3. Pokaż moją listę wypożyczonych książek
+                            4. Wyloguj
+
+                            """
             );
             int choice = input.nextInt();
             switch (choice) {
