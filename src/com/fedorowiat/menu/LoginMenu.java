@@ -1,8 +1,9 @@
 package com.fedorowiat.menu;
 
 
-
 import com.fedorowiat.dbservice.DataBase;
+import com.fedorowiat.exception.UserNotFoundException;
+import com.fedorowiat.user.UserType;
 
 import java.util.Scanner;
 
@@ -23,16 +24,17 @@ public class LoginMenu {
         System.out.print("Podaj hasło: ");
         var password = input.nextLine();
         System.out.println("\n\n");
-            if(dataBase.checkLoginData(login, password)){
-                if (dataBase.getAccessLevel(login, password).equals("false")){
-                    userMenu.showUserMenu(login);
-                } else if (dataBase.getAccessLevel(login, password).equals("true")) {
-                    adminMenu.showAdminMenu(login);
-                } else {
-                    System.out.println("Błędny login lub hasło");
-                }
-            }
+        String accessLevel = null;
+        try {
+            accessLevel = dataBase.getAccessLevel(login, password);
+        } catch (UserNotFoundException e) {
+            System.out.println("Błędny login lub hasło");
+        }
 
+        if (UserType.ADMIN.name().equals(accessLevel)) {
+            adminMenu.showAdminMenu(login);
+        }
+        userMenu.showUserMenu(login);
     }
 
 

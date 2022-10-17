@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class MainMenu {
     private final Scanner input;
     private final LoginMenu loginMenu;
-    private UserService userService;
+    private final UserService userService;
     private DataBase dataBase;
 
 
