@@ -1,32 +1,30 @@
 package com.fedorowiat.menu;
 
-
-
 import java.util.Scanner;
 
 public class AdminMenu {
     private final Scanner input;
 
-
     public AdminMenu() {
         this.input = new Scanner(System.in);
     }
 
-
     public void showAdminMenu(String login) {
         boolean loop = true;
         while (loop) {
-            System.out.print("\n\nWitaj.------");
+            System.out.println("\nWitaj.------");
             System.out.println("Zalogowany jako: " + login);
             System.out.println("-----------------------------");
             System.out.println(
-                    "Biblioteka: \n" +
-                            "1. Dodaj książkę \n" +
-                            "2. Usuń książkę \n" +
-                            "3. Pokaż liste książek\n" +
-                            "4. Pokaż listę użytkowników\n" +
-                            "5. Pokaż listę osób, które wypożyczyły książkę\n" +
-                            "6. Wyloguj\n\n"
+                """
+                    Biblioteka:
+                    1. Dodaj książkę
+                    2. Usuń książkę
+                    3. Pokaż liste książek
+                    4. Pokaż listę użytkowników
+                    5. Pokaż listę osób, które wypożyczyły książkę
+                    6. Wyloguj
+                """
             );
             int choice = input.nextInt();
             switch (choice) {
@@ -39,7 +37,7 @@ public class AdminMenu {
                 default -> System.out.println("\n\nNie wybrano prawdiłowej opcji!\n\n");
             }
         }
-
     }
+
 }
 

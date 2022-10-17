@@ -8,15 +8,15 @@ public class User {
     private String firstName;
     private String lastName;
     private String password;
-    private Boolean permissions;
+    private UserType userType;
 
 
-    public User(String login,String firstName, String lastName, String password, Boolean permissions) {
+    public User(String login,String firstName, String lastName, String password, UserType userType) {
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
-        this.permissions = permissions;
+        this.userType = userType;
     }
 
     public void setId(Integer id) {
@@ -31,8 +31,8 @@ public class User {
         this.password = password;
     }
 
-    public void setPermissions(Boolean permissions) {
-        this.permissions = permissions;
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 
     public String getFirstName() {
@@ -47,8 +47,8 @@ public class User {
         return id;
     }
 
-    public Boolean getPermissions() {
-        return permissions;
+    public UserType getPermissions() {
+        return userType;
     }
 
     public String getLogin() {
@@ -61,8 +61,8 @@ public class User {
     }
 
 
-    public boolean isPermissions() {
-        return permissions;
+    public UserType getUserType() {
+        return userType;
     }
 
     public void setFirstName(String firstName) {
@@ -79,7 +79,7 @@ public class User {
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", permissions=" + permissions +
+                ", permissions=" + userType +
                 '}';
     }
 

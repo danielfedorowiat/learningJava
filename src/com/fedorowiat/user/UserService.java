@@ -16,12 +16,13 @@ public class UserService {
 
 
     public void registerAccount() {
-        User user = new User("", "", "", "", false);
+        User user = new User("", "", "", "", UserType.USER);
         var reenterLogin = true;
         while (reenterLogin) {
             System.out.println("Podaj email: ");
             var login = scanner.nextLine();
-            if (dataBase.checkEmailIsExist(login)) {
+            if (!dataBase.checkEmailIsExist(login)) {
+                user.setLogin(login);
                 System.out.println("Podaj imię: ");
                 user.setFirstName(scanner.nextLine());
 
@@ -53,4 +54,6 @@ public class UserService {
 
         }
     }
+
+
 }
